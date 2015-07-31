@@ -7,6 +7,12 @@ USE [MDC]
 GO
 
 --AP
+CREATE TABLE [dbo].[AccountPrivileges]
+(
+[Id] INT NOT NULL PRIMARY KEY,
+[AccountType] VARCHAR(255) NOT NULL
+)
+
 CREATE TABLE [dbo].[Users]
 (
 [Id] BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
@@ -16,10 +22,13 @@ CREATE TABLE [dbo].[Users]
 [TelNumber] VARCHAR(15) NULL, 
 [Email] VARCHAR(255) NULL, 
 [Position] VARCHAR(255) NULL, 
-[AccountType] SMALLINT NOT NULL, -------- foreign key 
+[AccountType] INT FOREIGN KEY REFERENCES [dbo].[AccountPrivileges](Id) ON DELETE CASCADE ON UPDATE CASCADE,
 [Login] VARCHAR(255) NOT NULL, 
 [Password] VARCHAR(255) NOT NULL
 )
+
+INSERT INTO [dbo].[AccountPrivileges] VALUES (1, N'User')
+INSERT INTO [dbo].[AccountPrivileges] VALUES (2, N'Admin')
 
 --LL
 CREATE TABLE [dbo].[AdditionalSuggestions] (
