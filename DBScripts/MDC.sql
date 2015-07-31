@@ -82,3 +82,24 @@ CREATE TABLE [dbo].[HallEquipmnet]
 [Amount] SMALLINT NULL,
 [Days] SMALLINT NULL
 )
+
+--MO
+CREATE TABLE [dbo].[MenuPosition]
+(
+[Id] BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
+[TypeOfServices] VARCHAR(30) NULL,
+[BruttoPrice] MONEY NULL,
+[Vat] DECIMAL(4,3) NULL,
+[Quantity] INT,
+[Days] SMALLINT NULL,
+
+)
+CREATE TABLE [dbo].[Accomodation]
+(
+[Id] BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
+[TypeOfRoom] VARCHAR(30) NULL,
+[BruttoPrice] MONEY NULL,
+[Vat] DECIMAL(4,3) NULL,
+[Amount] TINYINT NULL,
+[Days] SMALLINT NULL
+)
