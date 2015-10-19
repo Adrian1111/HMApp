@@ -1,0 +1,20 @@
+insert PropPaymentSuggestions_Dictionary_First (PaymentForm) values ('50 % zadatek / 50% do dnia realizacji');
+insert PropPaymentSuggestions_Dictionary_First (PaymentForm) values ('100% zadatek');
+insert PropPaymentSuggestions_Dictionary_First (PaymentForm) values ('100% do dnia realizacji');
+insert PropPaymentSuggestions_Dictionary_First (PaymentForm) values ('Przelew 7 dni');
+insert PropPaymentSuggestions_Dictionary_First (PaymentForm) values ('Przelew 14 dni');
+insert PropPaymentSuggestions_Dictionary_First (PaymentForm) values ('Przelew 21 dni');
+insert PropPaymentSuggestions_Dictionary_First (PaymentForm) values ('Inna');
+insert PropPaymentSuggestions_Dictionary_First (PaymentForm) values ('Gotówka/karta');
+insert PropPaymentSuggestions_Dictionary_First (PaymentForm) values ('Do ustalenia');
+
+PropAccomodation__Dictionary
+PropExtraServices_Dictionary
+PropHallEquipment_Dictionary_First
+PropHallEquipment_Dictionary_Second
+PropMenuGastoronomicThings_Dictionary_First
+PropMenuMerge_Dictionary_First
+	PropPaymentSuggestions_Dictionary_First
+PropPaymentSuggestions_Dictionary_Second
+PropPaymentSuggestions_Dictionary_Third
+PropPaymentSuggestions_Dictionary_Fourth
