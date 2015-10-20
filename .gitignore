@@ -1,6 +1,7 @@
 DiamondApp/bin/Debug/DiamondApp.exe.config
 DiamondApp/bin/Debug/DiamondApp.vshost.exe.config
 DiamondApp/bin/Debug/DiamondApp.vshost.exe.manifest
+DiamondApp/obj/Debug/*
 DiamondApp/obj/Debug/App.g.cs
 DiamondApp/obj/Debug/App.g.i.cs
 DiamondApp/obj/Debug/DiamondApp.Properties.Resources.resources
