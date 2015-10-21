@@ -12,7 +12,7 @@
         <EntityTypeShape EntityType="DiamondDBModel.PropMenuPosition" Width="1.5" PointX="7.5" PointY="11.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.Proposition" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropPaymentSuggestions" Width="1.5" PointX="7.5" PointY="14.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiamondDBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiamondDBModel.sysdiagrams" Width="1.5" PointX="0.5" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.Users" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropAccomodation_Dictionary" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropExtraServices_Dictionary" Width="1.5" PointX="2.75" PointY="2.75" IsExpanded="true" />
