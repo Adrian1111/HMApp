@@ -1,11 +1,13 @@
 ﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:DiamondApp" x:Class="DiamondApp.MainWindow"
+        xmlns:local="clr-namespace:DiamondApp"
+        xmlns:viewModels="clr-namespace:DiamondApp.ViewModels"
+        x:Class="DiamondApp.MainWindow"
         Title="MainWindow" Height="426.12" Width="935.448">
 
     <Window.DataContext>
-        <local:MainWindowViewModel/>
+        <viewModels:MainWindowViewModel/>
     </Window.DataContext>
 
     <Grid Margin="0,1,-8,-300">
