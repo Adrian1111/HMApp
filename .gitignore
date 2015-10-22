@@ -17,3 +17,4 @@ DiamondApp/obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3
 DBScripts/DiamondDB_v0.3.sql.orig
 packages/Portable.MvvmLightLibs.5.0.2.0/*
 packages/MvvmLightLibs.5.2.0.0/*
+DiamondAppTests/obj/Debug/*
