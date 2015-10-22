@@ -70,12 +70,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DiamondDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Element.cs" />
+    <Compile Include="EnumToBooleanConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SubBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

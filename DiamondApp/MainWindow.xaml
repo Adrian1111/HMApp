@@ -1,17 +1,115 @@
 ﻿<Window x:Class="DiamondApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="426.12" Width="935.448">
-    <Grid Margin="0,1,-8,-300">
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="30" Margin="611,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="247"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="30" Margin="346,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="260"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="30" Margin="94,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="247"/>
-        <Label Content="HD" HorizontalAlignment="Left" Height="32" Margin="23,18,0,0" VerticalAlignment="Top" Width="53" FontSize="20" FontWeight="Bold" Foreground="White"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="28" Margin="125,45,0,0" Stroke="Black" VerticalAlignment="Top" Width="173"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="28" Margin="303,45,0,0" Stroke="Black" VerticalAlignment="Top" Width="173"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="28" Margin="481,45,0,0" Stroke="Black" VerticalAlignment="Top" Width="173"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="28" Margin="659,45,0,0" Stroke="Black" VerticalAlignment="Top" Width="173"/>
-        <Label Content="Tu zegar" HorizontalAlignment="Left" Height="33" Margin="23,55,0,0" VerticalAlignment="Top" Width="69" FontFamily="Segoe WP" Foreground="White"/>
-        <Rectangle Fill="#FF1F1F1F" HorizontalAlignment="Left" Height="88" Margin="10,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="915" Panel.ZIndex="-1"/>
+                xmlns:Local="clr-namespace:DiamondApp"
+        Title="MainWindow" Height="396.12" Width="935.448"
+               x:Name="mainWindow">
+    <Window.Resources>
+        <Local:EnumToBooleanConverter x:Key="EnumToBooleanConverter"/>
+
+        <Style x:Key="SquareRadioButtonStyle" TargetType="{x:Type RadioButton}">
+            <Setter Property="Width" Value="85"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Border x:Name="border" BorderThickness="2" 
+                			    Background="LightBlue"
+                			    BorderBrush="DarkBlue">
+                            <TextBlock HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center" 
+                                       Margin="0" 
+                                       FontSize="12"
+                					   Text="{TemplateBinding Content}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="LightGreen"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="DarkGreen"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="HotPink"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate x:Key="RadioButtonTemplate">
+            <RadioButton Style="{StaticResource SquareRadioButtonStyle}"
+                         Content="{Binding First}"
+                         GroupName="SubFields"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="TextBlockTemplate">
+            <RadioButton Style="{StaticResource SquareRadioButtonStyle}"
+                         Content="{Binding Second}"
+                         GroupName="SubFields"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="CheckBoxTemplate">
+            <RadioButton Style="{StaticResource SquareRadioButtonStyle}"
+                         Content="{Binding Third}"
+                         GroupName="SubFields"/>
+
+        </DataTemplate>
+
+        <DataTemplate x:Key="SubBoxItemTemplate">
+            <ContentPresenter x:Name="SubFieldsPresenter"
+                              Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}"
+                              ContentTemplate="{StaticResource RadioButtonTemplate}"/>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding ElementName=mainWindow, Path=DataContext.ElementView, UpdateSourceTrigger=PropertyChanged}" 
+                             Value="{x:Static Local:Element.Propozycje}">
+                    <Setter TargetName="SubFieldsPresenter" 
+                            Property="ContentTemplate" 
+                            Value="{StaticResource RadioButtonTemplate}"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding ElementName=mainWindow, Path=DataContext.ElementView, UpdateSourceTrigger=PropertyChanged}" 
+                             Value="{x:Static Local:Element.Inne}">
+                    <Setter TargetName="SubFieldsPresenter" 
+                            Property="ContentTemplate" 
+                            Value="{StaticResource TextBlockTemplate}"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding ElementName=mainWindow, Path=DataContext.ElementView, UpdateSourceTrigger=PropertyChanged}" 
+                             Value="{x:Static Local:Element.Administrator}">
+                    <Setter TargetName="SubFieldsPresenter" 
+                            Property="ContentTemplate" 
+                            Value="{StaticResource CheckBoxTemplate}"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+
+    </Window.Resources>
+    <Grid Margin="0,0,0,36">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <RadioButton Content="Propozycje" 
+                     Style="{StaticResource SquareRadioButtonStyle}" 
+                     IsChecked="{Binding ElementView, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static Local:Element.Propozycje}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10,0" Width="Auto" Height="Auto"/>
+        <RadioButton Grid.Column="1" 
+                     Content="Inne" 
+                     Style="{StaticResource SquareRadioButtonStyle}"
+                     IsChecked="{Binding ElementView, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static Local:Element.Inne}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10,0" Height="Auto" Width="Auto"/>
+        <RadioButton Grid.Column="2" 
+                     Content="Administrator" 
+                     Style="{StaticResource SquareRadioButtonStyle}"
+                     IsChecked="{Binding ElementView, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static Local:Element.Administrator}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10,0" Height="Auto" Width="Auto"/>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <ItemsControl Height="200" 
+        	ItemsSource="{Binding SubFields}"
+        	ItemTemplate="{StaticResource SubBoxItemTemplate}" Margin="0,2,10,77" Grid.Row="1" Grid.ColumnSpan="3"/>
+
     </Grid>
 </Window>
